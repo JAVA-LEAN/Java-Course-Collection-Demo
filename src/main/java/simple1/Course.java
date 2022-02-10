@@ -1,5 +1,7 @@
 package simple1;
 
+import java.util.Objects;
+
 /**
  * 课程类
  */
@@ -31,5 +33,24 @@ public class Course {
     //重载
     public Course(){
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Course)) return false;
+        Course course = (Course) o;
+        if (name==null){
+            if (course.name != null)
+                return false;
+        }else if(!name.equals(course.name))
+            return false;
+        return true;
+        //return Objects.equals(name, course.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }
